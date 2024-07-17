@@ -19,7 +19,9 @@ function secretFunNumber() {
     
     console.log(generatedNumber);
     console.log(listNumber);
-    do {
+    if (listNumber.length == maxNumber) {
+        asignTextElement('p','All possible numbers have been drawn.');
+    } else {
         if (listNumber.includes(generatedNumber)) {
             return secretFunNumber();
             
@@ -27,9 +29,7 @@ function secretFunNumber() {
             listNumber.push(generatedNumber);
             return generatedNumber;
         }
-        
-    } while (listNumber.length <= maxNumber); 
-
+    }
 }
 
 //funcion para llamar las condiciones iniciales
