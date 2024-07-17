@@ -2,6 +2,8 @@ let numberSecret = 0;
 let trynumber = 0;
 let changeColor = 0;
 let borderBlue = document.getElementById('changeBorder');
+let listNumber = [];
+let maxNumber = 10;
 
 //funcion reutilizable para pasar texto por parametros a los elementos HTML
 function asignTextElement(element, text) {
@@ -13,7 +15,21 @@ function asignTextElement(element, text) {
 
 //funcion para hacer el numero random
 function secretFunNumber() {
-    return Math.floor(Math.random()*10)+1;
+    let generatedNumber = Math.floor(Math.random()*maxNumber)+1;
+    
+    console.log(generatedNumber);
+    console.log(listNumber);
+    do {
+        if (listNumber.includes(generatedNumber)) {
+            return secretFunNumber();
+            
+        } else {
+            listNumber.push(generatedNumber);
+            return generatedNumber;
+        }
+        
+    } while (listNumber.length <= maxNumber); 
+
 }
 
 //funcion para llamar las condiciones iniciales
@@ -22,8 +38,6 @@ function initalConditions() {
     asignTextElement('p','Give me a number between 1 to 10');
     numberSecret = secretFunNumber();
     trynumber = 1;
-    //ver numero secreto en consola
-    console.log(numberSecret);
     //regreso el color del border al azul inicial
     borderBlue.style.borderColor = '#1875E8';
 
@@ -31,7 +45,7 @@ function initalConditions() {
 }
 
 
-//funcion para cambiar el color del borde en base a si acierta o no
+//funcion para cambiar el color del borde en base a si acierta (verde) o no (rojo)
 function changeBorderColor(colrs) {
     if (colrs == 1) {
         borderBlue.style.borderColor = '#00FF34';
@@ -52,7 +66,6 @@ function tryItButton() {
     
     let userTry = parseInt(document.getElementById('inputElement').value);
     
-    console.log(trynumber);
     //con el triple igual comparo las variables Y tipos de variables. Ambas deben ser iguales.
     if (userTry === numberSecret) {
         //aqui se usa el operado ternario para evaluar si se usa la palabra time o times. es un if else de una linea
