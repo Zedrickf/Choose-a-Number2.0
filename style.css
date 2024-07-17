@@ -28,7 +28,7 @@ body::before {
 
 .container {
     width: 1200px;
-    height: 600px;
+    height: 720px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,12 +45,16 @@ body::before {
     display: flex;
     align-items: center;
     position: absolute;
+    height: inherit;
     bottom: 0;
 }
 
 .container__informaciones {
     flex: 1;
     padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .container__boton {
@@ -81,6 +85,11 @@ body::before {
     cursor:default;
 }
 
+.container__boton__general {
+    display: flex;
+    gap: 55px;
+}
+
 .container__texto {
     margin: 16px 0 16px 0;
 }
@@ -104,7 +113,11 @@ body::before {
 
 .container__botones {
     display: flex;
-    gap: 2em;
+    flex-direction: column;
+}
+
+.container__imagen {
+    align-self: flex-end;
 }
 
 h1 {
